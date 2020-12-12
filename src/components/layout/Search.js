@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
+import githubContext from '../../context/github/githubContext'
 
-const Search = ({ clearUsers, showClear, defineAlert, searchUser }) => {
+
+const Search = ({ clearUsers, showClear, defineAlert }) => {
     const [text, setText] = useState('')
+    const GithubContext = useContext(githubContext)
 
     const onSubmit = (e) => {
         e.preventDefault();
         if (text === '') {
             defineAlert('danger', "Please fill all the fields")
         } else {
-            searchUser(text)
+            GithubContext.searchUser(text)
             setText('')
         }
     }
@@ -18,6 +21,7 @@ const Search = ({ clearUsers, showClear, defineAlert, searchUser }) => {
     }
     return (
         <div>
+
             <form onSubmit={onSubmit}>
                 <div className="row">
                     <div className="col-md-8 from-group">
@@ -44,7 +48,6 @@ const Search = ({ clearUsers, showClear, defineAlert, searchUser }) => {
     )
 }
 Search.propTypes = {
-    searchUser: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
     defineAlert: PropTypes.func.isRequired
