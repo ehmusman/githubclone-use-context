@@ -67,7 +67,7 @@ const App = () => {
                     showClear={users.length > 0 ? true : false}
                     defineAlert={defineAlert}
                   />
-                  <Users users={users} loading={loading} />
+                  <Users />
                 </React.Fragment>
               } />
               <Route exact path='/about' component={About} />

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import UserItem from './UserItem'
 import Spinner from '../layout/Spinner'
-const Users = ({ loading, users }) => {
+import GithubContext from '../../context/github/githubContext'
 
+const Users = () => {
+    const { users, loading } = useContext(GithubContext)
     if (loading) {
         return <Spinner />
     } else {
@@ -15,6 +17,7 @@ const Users = ({ loading, users }) => {
                     />
                 )
             )}
+
         </div>
     }
 

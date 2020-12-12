@@ -1,18 +1,18 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
-import githubContext from '../../context/github/githubContext'
+import GithubContext from '../../context/github/githubContext'
 
 
 const Search = ({ clearUsers, showClear, defineAlert }) => {
     const [text, setText] = useState('')
-    const GithubContext = useContext(githubContext)
+    const githubContext = useContext(GithubContext)
 
     const onSubmit = (e) => {
         e.preventDefault();
         if (text === '') {
             defineAlert('danger', "Please fill all the fields")
         } else {
-            GithubContext.searchUser(text)
+            githubContext.searchUser(text)
             setText('')
         }
     }
