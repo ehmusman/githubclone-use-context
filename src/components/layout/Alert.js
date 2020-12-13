@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AlertContext from '../../context/alert/alertContext'
 
-const Alert = ({ alert, clearAlert }) => {
+const Alert = () => {
+    const { alert, clearAlert } = useContext(AlertContext)
     const setClearAlert = () => {
         clearAlert('clear')
     }
@@ -16,6 +18,7 @@ const Alert = ({ alert, clearAlert }) => {
                 style={{ float: 'right', cursor: 'pointer' }}
                 onClick={setClearAlert}
             ></i>
+
         </div>
 
     )
