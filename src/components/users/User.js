@@ -6,11 +6,11 @@ import PropTypes from 'prop-types'
 import GithubContext from '../../context/github/githubContext';
 
 
-const User = ({ userRepos, match, repos }) => {
-    const { getUser, user, loading } = useContext(GithubContext)
+const User = ({ match }) => {
+    const { getUser, user, loading, repos, getUserRepos } = useContext(GithubContext)
     useEffect(() => {
         getUser(match.params.login)
-        userRepos(match.params.login)
+        getUserRepos(match.params.login)
         //eslint-disable-next-line
     }, [])
 
