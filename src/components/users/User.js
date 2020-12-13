@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
 import PropTypes from 'prop-types'
+import GithubContext from '../../context/github/githubContext';
 
 
-const User = ({ user, getUser, userRepos, match, loading, repos }) => {
+const User = ({ userRepos, match, repos }) => {
+    const { getUser, user, loading } = useContext(GithubContext)
     useEffect(() => {
         getUser(match.params.login)
         userRepos(match.params.login)
@@ -18,6 +20,7 @@ const User = ({ user, getUser, userRepos, match, loading, repos }) => {
     if (loading) return <Spinner />
     return (
         <Fragment>
+
             <Link to='/' className='btn btn-dark mb-3 mx-3'>Back to Search</Link>
                 Hireable: {hireable ? <i className="fas fa-check text-success"></i> : <i className="fas fa-times-circle text-danger"></i>}
             <div className='row'>
