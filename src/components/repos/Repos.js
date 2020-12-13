@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import RepoItem from './RepoItem'
 import PropTypes from 'prop-types'
+import GithubContext from '../../context/github/githubContext'
 
 
-function Repos({ repos }) {
+function Repos() {
+    const { repos } = useContext(GithubContext)
     return <div className='card-columns'>
         {repos.map(repo =>
             <RepoItem

@@ -25,8 +25,7 @@ const App = () => {
               <Switch>
                 <Route exact path='/' render={props =>
                   <React.Fragment>
-                    <Search
-                    />
+                    <Search />
                     <Users />
                   </React.Fragment>
                 } />
