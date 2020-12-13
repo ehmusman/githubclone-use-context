@@ -6,7 +6,7 @@ import {
     GET_REPOS
 } from '../types'
 
-export default (state, action) => {
+const GithubReducer = (state, action) => {
     switch (action.type) {
         case SET_LOADING:
             return {
@@ -39,3 +39,4 @@ export default (state, action) => {
             return state;
     }
 }
+export default GithubReducer;
